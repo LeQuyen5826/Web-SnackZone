@@ -11,8 +11,8 @@ const Auth = (() => {
     {
       id: 2,
       role: "admin",
-      name: "Admin SnackBoom",
-      email: "admin@snackboom.vn",
+      name: "Admin SnackZone",
+      email: "admin@snackzone.vn",
       phone: "0909999888",
       password: "admin123",
     },
