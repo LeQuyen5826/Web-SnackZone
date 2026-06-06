@@ -161,13 +161,10 @@ const Auth = (() => {
   };
 
   const logout = () => {
-    clearSession();
-    updateAuthUI(null);
-    UI.toast("👋 Đã đăng xuất!");
-    if (window.location.pathname.includes("admin")) {
-      window.location.href = "../HTML/index.html";
-    }
-  };
+  clearSession();
+  updateAuthUI(null);
+  UI.toast('👋 Đã đăng xuất!');
+};
 
   const updateAuthUI = (user) => {
     const btn = document.getElementById("authBtn");
@@ -177,10 +174,7 @@ const Auth = (() => {
         <span class="icon">👤</span>
         <span>${user.name.split(" ").pop()}${user.role === "admin" ? " 🔑" : ""}</span>
       `;
-      btn.onclick = () => {
-        if (confirm(`Xin chào ${user.name}!\nBạn có muốn đăng xuất không?`))
-          logout();
-      };
+      btn.onclick = logout;
     } else {
       btn.innerHTML = `<span class="icon">👤</span><span>Đăng nhập</span>`;
       btn.onclick = openModal;
