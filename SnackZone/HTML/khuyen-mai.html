@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khuyến Mãi — SnackZone 🔥</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar__slogan"><span>🔥</span> ĐỒ ĂN VẶT NGON — GIAO HÀNG NHANH 30 PHÚT!</div>
+    <div class="top-bar__socials">
+      <a href="https://facebook.com" target="_blank"><span class="icon-fb"></span></a>
+      <a href="https://zalo.me" target="_blank"><span class="icon-zalo"></span></a>
+      <a href="https://tiktok.com" target="_blank"><span class="icon-tt"></span></a>
+      <a href="https://instagram.com" target="_blank"><span class="icon-ig"></span></a>
+    </div>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="header__logo">
+      <img src="../img/logo.png" alt="logo" class="header__logo-img">
+      <span class="header__logo-text">Snack<span>Zone</span></span>
+    </a>
+    <div class="header__search">
+      <input type="text" id="headerSearch" placeholder="🔍 Tìm kiếm đồ ăn vặt..." autocomplete="off">
+      <button class="header__search-btn">🔍</button>
+    </div>
+    <div class="header__actions">
+      <button class="btn-auth" id="authBtn" onclick="Auth.openModal()">
+        <span class="icon">👤</span><span>Đăng nhập</span>
+      </button>
+      <button class="btn-cart" onclick="Cart.openSidebar()">
+        <span class="icon">🛒</span><span>Giỏ hàng</span>
+        <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="navbar">
+  <div class="container">
+    <ul class="navbar__menu">
+      <li><a href="index.html" class="navbar__link">🏠 Trang Chủ</a></li>
+      <li><a href="gioi-thieu.html" class="navbar__link">💛 Giới Thiệu</a></li>
+      <li class="navbar__item">
+        <a href="san-pham.html" class="navbar__link">🛍️ Sản Phẩm <span class="arrow">▼</span></a>
+        <div class="navbar__dropdown">
+          <a href="san-pham.html?cat=snack">🍟 Snack & Chips</a>
+          <a href="san-pham.html?cat=drink">🧋 Đồ Uống</a>
+          <a href="san-pham.html?cat=candy">🍬 Kẹo & Bánh</a>
+          <a href="san-pham.html?cat=combo">🎁 Combo Deal</a>
+        </div>
+      </li>
+      <li><a href="khuyen-mai.html" class="navbar__link active">🔥 Khuyến Mãi</a></li>
+      <li><a href="lien-he.html" class="navbar__link">📞 Liên Hệ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="promo-hero">
+  <div class="container">
+    <span style="display:inline-block;background:rgba(255,255,255,0.25);color:#fff;font-weight:900;font-size:0.8rem;padding:5px 18px;border-radius:50px;letter-spacing:1.5px;margin-bottom:14px">HOT DEALS 🔥</span>
+    <h1 data-reveal>Khuyến Mãi <span style="color:var(--yellow)">Siêu Khủng!</span></h1>
+    <p data-reveal>Săn deal hot mỗi ngày — tiết kiệm đến 50% cho hàng trăm sản phẩm yêu thích!</p>
+  </div>
+</section>
+
+<section class="section section--gray">
+  <div class="container">
+    <div class="section__header" data-reveal>
+      <div>
+        <h2 class="section__title">Mã <span>Giảm Giá</span></h2>
+        <p class="section__subtitle">Sao chép mã và dùng khi thanh toán</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div style="background:#fff;border-radius:var(--radius-lg);padding:24px;border:2px dashed var(--red);position:relative;overflow:hidden" data-reveal>
+        <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;background:rgba(232,35,42,0.06);border-radius:50%"></div>
+        <div style="font-size:2rem;margin-bottom:10px">🎟️</div>
+        <div style="font-family:var(--font-head);font-size:1.6rem;color:var(--red);letter-spacing:2px">SNACK10</div>
+        <div style="font-weight:700;font-size:0.88rem;margin:8px 0;color:var(--dark)">Giảm 10% toàn bộ đơn hàng</div>
+        <div style="font-size:0.78rem;color:var(--gray-text)">HSD: 31/12/2025 · Không giới hạn lượt dùng</div>
+        <button onclick="copyCode('SNACK10')" style="margin-top:14px;background:var(--red);color:#fff;border:none;padding:8px 20px;border-radius:var(--radius-pill);font-weight:900;font-size:0.85rem;cursor:pointer;transition:all 0.2s" onmouseover="this.style.background='var(--orange)'" onmouseout="this.style.background='var(--red)'">
+          📋 Sao chép mã
+        </button>
+      </div>
+      <div style="background:#fff;border-radius:var(--radius-lg);padding:24px;border:2px dashed var(--green);position:relative;overflow:hidden" data-reveal>
+        <div style="font-size:2rem;margin-bottom:10px">🚚</div>
+        <div style="font-family:var(--font-head);font-size:1.6rem;color:var(--green);letter-spacing:2px">FREESHIP</div>
+        <div style="font-weight:700;font-size:0.88rem;margin:8px 0;color:var(--dark)">Miễn phí giao hàng mọi đơn</div>
+        <div style="font-size:0.78rem;color:var(--gray-text)">HSD: 31/12/2025 · Tối đa 20,000đ/đơn</div>
+        <button onclick="copyCode('FREESHIP')" style="margin-top:14px;background:var(--green);color:#fff;border:none;padding:8px 20px;border-radius:var(--radius-pill);font-weight:900;font-size:0.85rem;cursor:pointer">
+          📋 Sao chép mã
+        </button>
+      </div>
+      <div style="background:#fff;border-radius:var(--radius-lg);padding:24px;border:2px dashed var(--orange);position:relative;overflow:hidden" data-reveal>
+        <div style="font-size:2rem;margin-bottom:10px">🎁</div>
+        <div style="font-family:var(--font-head);font-size:1.6rem;color:var(--orange);letter-spacing:2px">WELCOME</div>
+        <div style="font-weight:700;font-size:0.88rem;margin:8px 0;color:var(--dark)">Giảm 20,000đ cho khách mới</div>
+        <div style="font-size:0.78rem;color:var(--gray-text)">Chỉ dùng 1 lần · Đơn tối thiểu 50,000đ</div>
+        <button onclick="copyCode('WELCOME')" style="margin-top:14px;background:var(--orange);color:#fff;border:none;padding:8px 20px;border-radius:var(--radius-pill);font-weight:900;font-size:0.85rem;cursor:pointer">
+          📋 Sao chép mã
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__header" data-reveal>
+      <div>
+        <h2 class="section__title">Deal <span>Hôm Nay 🔥</span></h2>
+        <p class="section__subtitle">Ưu đãi giới hạn — hết hàng là hết deal!</p>
+      </div>
+    </div>
+    <div class="promo-cards-grid">
+      <div class="promo-deal-card" data-reveal>
+        <div class="promo-deal-card__img">🎉</div>
+        <div class="promo-deal-card__body">
+          <div class="promo-deal-card__title">Mua 2 Tặng 1 — Snack Chips</div>
+          <div class="promo-deal-card__desc">Áp dụng cho tất cả snack & chips. Mua 2 gói bất kỳ, tặng ngay 1 gói cùng loại!</div>
+          <div class="promo-deal-card__expire">⏰ Còn 2 ngày</div>
+          <a href="san-pham.html?cat=snack" class="btn btn-primary" style="margin-top:14px;display:inline-flex;padding:10px 22px;font-size:0.88rem">Mua ngay →</a>
+        </div>
+      </div>
+      <div class="promo-deal-card" data-reveal>
+        <div class="promo-deal-card__img">🧋</div>
+        <div class="promo-deal-card__body">
+          <div class="promo-deal-card__title">Combo Đồ Uống Giảm 30%</div>
+          <div class="promo-deal-card__desc">Tất cả combo đồ uống giảm 30%. Đặt 2 combo trở lên freeship toàn quốc!</div>
+          <div class="promo-deal-card__expire">⏰ Còn 5 ngày</div>
+          <a href="san-pham.html?cat=drink" class="btn btn-primary" style="margin-top:14px;display:inline-flex;padding:10px 22px;font-size:0.88rem">Mua ngay →</a>
+        </div>
+      </div>
+      <div class="promo-deal-card" data-reveal>
+        <div class="promo-deal-card__img">⚡</div>
+        <div class="promo-deal-card__body">
+          <div class="promo-deal-card__title">Flash Sale 50% — Kẹo Nhập Khẩu</div>
+          <div class="promo-deal-card__desc">Kẹo dẻo Haribo và kẹo Nhật giảm 50%! Chỉ còn 100 suất — nhanh tay!</div>
+          <div class="promo-deal-card__expire" style="color:var(--red)">🔥 Chỉ còn hôm nay!</div>
+          <a href="san-pham.html?cat=candy" class="btn btn-primary" style="margin-top:14px;display:inline-flex;padding:10px 22px;font-size:0.88rem">Mua ngay →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <span class="footer__brand-logo">🍟 SnackZone</span>
+        <p class="footer__desc">Cửa hàng đồ ăn vặt uy tín hàng đầu Hà Nội.</p>
+        <div class="footer__socials">
+          <a href="#">f</a><a href="#">Z</a><a href="#">♪</a><a href="#">◎</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer__heading">Điều Hướng</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">🏠 Trang chủ</a></li>
+          <li><a href="gioi-thieu.html">💛 Giới thiệu</a></li>
+          <li><a href="san-pham.html">🛍️ Sản phẩm</a></li>
+          <li><a href="khuyen-mai.html">🔥 Khuyến mãi</a></li>
+          <li><a href="lien-he.html">📞 Liên hệ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__heading">Hỗ Trợ</h4>
+        <ul class="footer__links">
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Bảo mật</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__heading">Liên Hệ</h4>
+        <div class="footer__contact-item"><span>📍</span><span>123 Nguyễn Trãi, Thanh Xuân, Hà Nội</span></div>
+        <div class="footer__contact-item"><span>📞</span><span>0901 234 567</span></div>
+        <div class="footer__contact-item"><span>✉️</span><span>hello@snackzone.vn</span></div>
+      </div>
+    </div>
+    <div class="footer__bottom">© 2025 SnackZone. Đồ ăn vặt là hạnh phúc 🍟</div>
+  </div>
+</footer>
+
+<div class="cart-overlay" id="cartOverlay" onclick="Cart.closeSidebar()"></div>
+<aside class="cart-sidebar" id="cartSidebar">
+  <div class="cart-sidebar__head">
+    <div class="cart-sidebar__title">🛒 Giỏ Hàng</div>
+    <button class="close-btn" onclick="Cart.closeSidebar()">✕</button>
+  </div>
+  <div class="cart-sidebar__body" id="cartBody"></div>
+  <div class="cart-sidebar__foot" id="cartFoot" style="display:none">
+    <div class="cart-row total"><span>Tổng cộng</span><span id="cartTotal">0đ</span></div>
+    <button class="btn-checkout" onclick="Cart.goCheckout()">🛍️ Thanh Toán</button>
+  </div>
+</aside>
+
+<div class="modal-overlay" id="authOverlay" onclick="Auth.closeModal()">
+  <div class="modal" id="authModal" onclick="event.stopPropagation()">
+    <button class="modal__close" onclick="Auth.closeModal()">✕</button>
+    <div class="modal__logo">🍟 SnackBoom</div>
+    <p class="modal__subtitle">Chào mừng bạn!</p>
+    <div class="role-tabs">
+      <button class="role-tab active" data-role="user" onclick="Auth.setRole('user')">👤 Khách Hàng</button>
+      <button class="role-tab" data-role="admin" onclick="Auth.setRole('admin')">🔑 Quản Trị</button>
+    </div>
+    <div id="adminHint" style="display:none;background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:10px 14px;font-size:0.82rem;margin-bottom:16px;color:#856404;">
+      Demo: <strong>admin@snackboom.vn</strong> / <strong>admin123</strong>
+    </div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login" onclick="Auth.setTab('login')">Đăng Nhập</button>
+      <button class="auth-tab" data-tab="register" onclick="Auth.setTab('register')">Đăng Ký</button>
+    </div>
+    <div id="loginForm">
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" id="loginEmail" type="email" placeholder="email@example.com">
+        <div class="form-error" id="loginEmailErr"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mật khẩu</label>
+        <input class="form-input" id="loginPassword" type="password" placeholder="••••••••">
+        <div class="form-error" id="loginPassErr"></div>
+      </div>
+      <button class="form-submit" onclick="Auth.login()">🔐 Đăng Nhập</button>
+    </div>
+    <div id="registerForm" style="display:none">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Họ tên</label>
+          <input class="form-input" id="regName" type="text">
+          <div class="form-error" id="regNameErr"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">SĐT</label>
+          <input class="form-input" id="regPhone" type="tel">
+          <div class="form-error" id="regPhoneErr"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" id="regEmail" type="email">
+        <div class="form-error" id="regEmailErr"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Mật khẩu</label>
+          <input class="form-input" id="regPassword" type="password">
+          <div class="form-error" id="regPassErr"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Xác nhận</label>
+          <input class="form-input" id="regConfirm" type="password">
+          <div class="form-error" id="regConfirmErr"></div>
+        </div>
+      </div>
+      <button class="form-submit" onclick="Auth.register()">🎉 Đăng Ký</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="../JS/ui.js"></script>
+<script src="../JS/products.js"></script>
+<script src="../JS/cart.js"></script>
+<script src="../JS/auth.js"></script>
+<script>
+  function copyCode(code) {
+    navigator.clipboard?.writeText(code).then(() => {
+      UI.toast(`📋 Đã sao chép mã: ${code}`);
+    }).catch(() => {
+      UI.toast(`Mã: ${code} — Dán vào ô khuyến mãi khi thanh toán!`);
+    });
+  }
+</script>
+</body>
+</html>

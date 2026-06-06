@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — SnackBoom 🔑</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body class="admin-body">
+
+<!-- ADMIN TOPBAR -->
+<header class="admin-topbar">
+  <!-- Logo click về shop -->
+  <a href="index.html" class="admin-topbar__logo" title="Về trang chủ shop">
+    🍟 SnackZone
+  </a>
+  <div class="admin-topbar__right">
+    <span class="admin-topbar__user" id="adminName">🔑 Admin</span>
+    <button class="admin-topbar__logout" onclick="adminLogout()">🚪 Đăng xuất</button>
+  </div>
+</header>
+
+<!-- LAYOUT -->
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <nav class="admin-sidebar">
+    <div class="admin-sidebar__logo">⚡ Quản Trị</div>
+    <button class="admin-nav__item active" onclick="showPage('dashboard', this)">
+      <span class="admin-nav__icon">📊</span> Tổng quan
+    </button>
+    <button class="admin-nav__item" onclick="showPage('orders', this)">
+      <span class="admin-nav__icon">📦</span> Đơn hàng
+    </button>
+    <button class="admin-nav__item" onclick="showPage('products', this)">
+      <span class="admin-nav__icon">🍟</span> Sản phẩm
+    </button>
+    <button class="admin-nav__item" onclick="showPage('categories', this)">
+      <span class="admin-nav__icon">📂</span> Danh mục
+    </button>
+    <button class="admin-nav__item" onclick="showPage('customers', this)">
+      <span class="admin-nav__icon">👥</span> Khách hàng
+    </button>
+    <button class="admin-nav__item" onclick="showPage('promos', this)">
+      <span class="admin-nav__icon">🎟️</span> Khuyến mãi
+    </button>
+    <button class="admin-nav__item" onclick="showPage('settings', this)">
+      <span class="admin-nav__icon">⚙️</span> Cài đặt
+    </button>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="admin-main">
+
+    <!-- ══ DASHBOARD ══ -->
+    <div class="admin-page active" id="page-dashboard">
+      <div class="admin-header">
+        <h1 class="admin-title">📊 Tổng Quan Hôm Nay</h1>
+        <span style="font-size:0.82rem;color:var(--gray-text)" id="currentDate"></span>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--red">💰</div>
+          <div>
+            <div class="stat-card__num">12.4M</div>
+            <div class="stat-card__label">Doanh thu hôm nay</div>
+            <div class="stat-card__change change--up">↑ +18%</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--green">📦</div>
+          <div>
+            <div class="stat-card__num" id="statOrders">—</div>
+            <div class="stat-card__label">Đơn hàng mới</div>
+            <div class="stat-card__change change--up">↑ +5 đơn</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--orange">👥</div>
+          <div>
+            <div class="stat-card__num">247</div>
+            <div class="stat-card__label">Lượt truy cập</div>
+            <div class="stat-card__change change--down">↓ -3%</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__icon stat-card__icon--blue">🛍️</div>
+          <div>
+            <div class="stat-card__num">89%</div>
+            <div class="stat-card__label">Tỷ lệ hoàn thành</div>
+            <div class="stat-card__change change--up">↑ +2%</div>
+          </div>
+        </div>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card__head">
+          <div class="admin-card__title">📦 Đơn Hàng Gần Đây</div>
+          <button class="tbl-action tbl-action--view" onclick="showPage('orders', document.querySelectorAll('.admin-nav__item')[1])">Xem tất cả →</button>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>Sản phẩm</th><th>Tổng tiền</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+          <tbody id="recentOrdersBody">
+            <tr><td colspan="6" style="text-align:center;color:var(--gray-text);padding:22px">Chưa có đơn hàng nào</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="admin-card">
+        <div class="admin-card__head">
+          <div class="admin-card__title">🔥 Sản Phẩm Bán Chạy</div>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Sản phẩm</th><th>Danh mục</th><th>Giá</th><th>Đã bán</th><th>Doanh thu</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><div style="display:flex;align-items:center;gap:9px"><div class="prod-thumb">🧀</div>Snack Khoai Tây Phô Mai</div></td>
+              <td>Snack & Chips</td><td style="color:var(--red);font-weight:800">25,000đ</td>
+              <td><strong>342</strong></td><td style="color:var(--green);font-weight:800">8,550,000đ</td>
+            </tr>
+            <tr>
+              <td><div style="display:flex;align-items:center;gap:9px"><div class="prod-thumb">🐻</div>Kẹo Dẻo Gấu</div></td>
+              <td>Kẹo & Bánh</td><td style="color:var(--red);font-weight:800">20,000đ</td>
+              <td><strong>289</strong></td><td style="color:var(--green);font-weight:800">5,780,000đ</td>
+            </tr>
+            <tr>
+              <td><div style="display:flex;align-items:center;gap:9px"><div class="prod-thumb">🌶️</div>Bánh Tráng Trộn</div></td>
+              <td>Snack & Chips</td><td style="color:var(--red);font-weight:800">30,000đ</td>
+              <td><strong>201</strong></td><td style="color:var(--green);font-weight:800">6,030,000đ</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ ORDERS ══ -->
+    <div class="admin-page" id="page-orders">
+      <div class="admin-header">
+        <h1 class="admin-title">📦 Quản Lý Đơn Hàng</h1>
+        <input class="search-input" placeholder="🔍 Tìm đơn hàng...">
+      </div>
+      <div class="admin-card">
+        <table class="data-table">
+          <thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>SĐT</th><th>Sản phẩm</th><th>Tổng tiền</th><th>Thanh toán</th><th>Ngày đặt</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+          <tbody id="ordersTableBody">
+            <tr><td colspan="9" style="text-align:center;color:var(--gray-text);padding:36px">Chưa có đơn hàng nào</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ PRODUCTS ══ -->
+    <div class="admin-page" id="page-products">
+      <div class="admin-header">
+        <h1 class="admin-title">🍟 Quản Lý Sản Phẩm</h1>
+        <div style="display:flex;gap:9px">
+          <input class="search-input" placeholder="🔍 Tìm sản phẩm..." oninput="filterProducts(this.value)">
+          <button style="background:var(--red);color:#fff;border:none;padding:7px 15px;border-radius:var(--radius-md);font-weight:900;font-size:0.83rem;cursor:pointer" onclick="UI.toast('Tính năng cần kết nối backend!')">+ Thêm mới</button>
+        </div>
+      </div>
+      <div class="admin-card">
+        <table class="data-table">
+          <thead><tr><th>ID</th><th>Sản phẩm</th><th>Danh mục</th><th>Thương hiệu</th><th>Giá</th><th>Badge</th><th>Thao tác</th></tr></thead>
+          <tbody id="productsAdminBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ CATEGORIES ══ -->
+    <div class="admin-page" id="page-categories">
+      <div class="admin-header">
+        <h1 class="admin-title">📂 Quản Lý Danh Mục</h1>
+        <button style="background:var(--red);color:#fff;border:none;padding:7px 15px;border-radius:var(--radius-md);font-weight:900;font-size:0.83rem;cursor:pointer" onclick="UI.toast('Thêm danh mục mới!')">+ Thêm danh mục</button>
+      </div>
+      <div class="admin-card">
+        <table class="data-table">
+          <thead><tr><th>ID</th><th>Tên danh mục</th><th>Icon</th><th>Số sản phẩm</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>#1</td><td><strong>Snack & Chips</strong></td><td>🍟</td><td>12 sản phẩm</td>
+              <td><span class="status-badge status--done">✅ Hiển thị</span></td>
+              <td><button class="tbl-action tbl-action--edit" onclick="UI.toast('Sửa Snack')">Sửa</button> <button class="tbl-action tbl-action--delete" onclick="UI.toast('Ẩn danh mục')">Ẩn</button></td>
+            </tr>
+            <tr>
+              <td>#2</td><td><strong>Đồ Uống</strong></td><td>🧋</td><td>6 sản phẩm</td>
+              <td><span class="status-badge status--done">✅ Hiển thị</span></td>
+              <td><button class="tbl-action tbl-action--edit" onclick="UI.toast('Sửa Đồ Uống')">Sửa</button> <button class="tbl-action tbl-action--delete" onclick="UI.toast('Ẩn danh mục')">Ẩn</button></td>
+            </tr>
+            <tr>
+              <td>#3</td><td><strong>Kẹo & Bánh</strong></td><td>🍬</td><td>9 sản phẩm</td>
+              <td><span class="status-badge status--done">✅ Hiển thị</span></td>
+              <td><button class="tbl-action tbl-action--edit" onclick="UI.toast('Sửa Kẹo Bánh')">Sửa</button> <button class="tbl-action tbl-action--delete" onclick="UI.toast('Ẩn danh mục')">Ẩn</button></td>
+            </tr>
+            <tr>
+              <td>#4</td><td><strong>Combo Deal</strong></td><td>🎁</td><td>3 sản phẩm</td>
+              <td><span class="status-badge status--done">✅ Hiển thị</span></td>
+              <td><button class="tbl-action tbl-action--edit" onclick="UI.toast('Sửa Combo')">Sửa</button> <button class="tbl-action tbl-action--delete" onclick="UI.toast('Ẩn danh mục')">Ẩn</button></td>
+            </tr>
+            <tr>
+              <td>#5</td><td><strong>Flash Sale</strong></td><td>🔥</td><td>—</td>
+              <td><span class="status-badge status--pending">⏳ Chờ kích hoạt</span></td>
+              <td><button class="tbl-action tbl-action--edit" onclick="UI.toast('Sửa Flash Sale')">Sửa</button> <button class="tbl-action tbl-action--delete" onclick="UI.toast('Ẩn danh mục')">Ẩn</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ CUSTOMERS ══ -->
+    <div class="admin-page" id="page-customers">
+      <div class="admin-header">
+        <h1 class="admin-title">👥 Quản Lý Khách Hàng</h1>
+        <input class="search-input" placeholder="🔍 Tìm khách hàng...">
+      </div>
+      <div class="admin-card">
+        <table class="data-table">
+          <thead><tr><th>ID</th><th>Họ tên</th><th>Email</th><th>SĐT</th><th>Tổng đơn</th><th>Ngày đăng ký</th><th>Thao tác</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>#001</td>
+              <td><div style="display:flex;align-items:center;gap:7px"><span style="font-size:1.25rem">😊</span> Nguyễn Văn A</div></td>
+              <td>user@demo.com</td><td>0901234567</td><td><strong>12</strong> đơn</td><td>01/01/2025</td>
+              <td><button class="tbl-action tbl-action--view" onclick="UI.toast('Xem chi tiết')">Xem</button> <button class="tbl-action tbl-action--delete" onclick="UI.toast('Xác nhận xóa?')">Xóa</button></td>
+            </tr>
+            <tr>
+              <td>#002</td>
+              <td><div style="display:flex;align-items:center;gap:7px"><span style="font-size:1.25rem">🥰</span> Trần Thuý Hà</div></td>
+              <td>ha@email.com</td><td>0912345678</td><td><strong>7</strong> đơn</td><td>15/03/2025</td>
+              <td><button class="tbl-action tbl-action--view" onclick="UI.toast('Xem chi tiết')">Xem</button> <button class="tbl-action tbl-action--delete" onclick="UI.toast('Xác nhận xóa?')">Xóa</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ PROMOS ══ -->
+    <div class="admin-page" id="page-promos">
+      <div class="admin-header">
+        <h1 class="admin-title">🎟️ Quản Lý Khuyến Mãi</h1>
+        <button style="background:var(--red);color:#fff;border:none;padding:7px 15px;border-radius:var(--radius-md);font-weight:900;font-size:0.83rem;cursor:pointer" onclick="UI.toast('Tạo mã mới!')">+ Tạo mã mới</button>
+      </div>
+      <div class="admin-card">
+        <table class="data-table">
+          <thead><tr><th>Mã</th><th>Loại</th><th>Giá trị</th><th>Điều kiện</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong style="font-family:var(--font-head);color:var(--red)">SNACK10</strong></td>
+              <td>Phần trăm</td><td>Giảm 10%</td><td>Không giới hạn</td>
+              <td><span class="status-badge status--done">✅ Đang chạy</span></td>
+              <td><button class="tbl-action tbl-action--edit" onclick="UI.toast('Sửa SNACK10')">Sửa</button> <button class="tbl-action tbl-action--delete" onclick="UI.toast('Tắt mã')">Tắt</button></td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--font-head);color:var(--green)">FREESHIP</strong></td>
+              <td>Phí ship</td><td>Miễn phí ship</td><td>Tối đa 20,000đ</td>
+              <td><span class="status-badge status--done">✅ Đang chạy</span></td>
+              <td><button class="tbl-action tbl-action--edit" onclick="UI.toast('Sửa FREESHIP')">Sửa</button> <button class="tbl-action tbl-action--delete" onclick="UI.toast('Tắt mã')">Tắt</button></td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--font-head);color:var(--orange)">WELCOME</strong></td>
+              <td>Cố định</td><td>Giảm 20,000đ</td><td>Đơn ≥ 50,000đ</td>
+              <td><span class="status-badge status--done">✅ Đang chạy</span></td>
+              <td><button class="tbl-action tbl-action--edit" onclick="UI.toast('Sửa WELCOME')">Sửa</button> <button class="tbl-action tbl-action--delete" onclick="UI.toast('Tắt mã')">Tắt</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══ SETTINGS ══ -->
+    <div class="admin-page" id="page-settings">
+      <div class="admin-header">
+        <h1 class="admin-title">⚙️ Cài Đặt Hệ Thống</h1>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div class="admin-card">
+          <div class="admin-card__title" style="margin-bottom:14px">🏪 Thông Tin Cửa Hàng</div>
+          <div class="form-group"><label class="form-label">Tên cửa hàng</label><input class="form-input" value="SnackBoom"></div>
+          <div class="form-group"><label class="form-label">Địa chỉ</label><input class="form-input" value="123 Nguyễn Trãi, Q.1, TP.HCM"></div>
+          <div class="form-group"><label class="form-label">Số điện thoại</label><input class="form-input" value="0901 234 567"></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" value="hello@snackboom.vn"></div>
+          <button onclick="UI.toast('✅ Đã lưu!')" style="background:var(--red);color:#fff;border:none;padding:9px 18px;border-radius:var(--radius-md);font-weight:900;cursor:pointer">💾 Lưu</button>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card__title" style="margin-bottom:14px">🚚 Cài Đặt Vận Chuyển</div>
+          <div class="form-group"><label class="form-label">Phí ship tiêu chuẩn (đ)</label><input class="form-input" value="20000" type="number"></div>
+          <div class="form-group"><label class="form-label">Đơn tối thiểu freeship (đ)</label><input class="form-input" value="79000" type="number"></div>
+          <div class="form-group"><label class="form-label">Phí ship siêu tốc (đ)</label><input class="form-input" value="40000" type="number"></div>
+          <button onclick="UI.toast('✅ Đã lưu!')" style="background:var(--red);color:#fff;border:none;padding:9px 18px;border-radius:var(--radius-md);font-weight:900;cursor:pointer">💾 Lưu</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="../JS/ui.js"></script>
+<script src="../JS/products.js"></script>
+<script src="../JS/auth.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const user = Auth.getSession();
+    if (!user || user.role !== 'admin') {
+      alert('⛔ Bạn không có quyền truy cập!\nVui lòng đăng nhập Admin.');
+      window.location.href = 'index.html';
+      return;
+    }
+    document.getElementById('adminName').textContent = '🔑 ' + user.name;
+    document.getElementById('currentDate').textContent =
+      new Date().toLocaleDateString('vi-VN', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+    loadOrders();
+    loadProductsAdmin();
+  });
+
+  function showPage(name, el) {
+    document.querySelectorAll('.admin-page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.admin-nav__item').forEach(n => n.classList.remove('active'));
+    document.getElementById('page-' + name)?.classList.add('active');
+    if (el) el.classList.add('active');
+  }
+
+  function loadOrders() {
+    const orders = JSON.parse(localStorage.getItem('sb_orders') || '[]');
+    document.getElementById('statOrders').textContent = orders.length;
+    const payMap = { cod:'💵 COD', bank:'🏦 CK', momo:'💜 MoMo', zalopay:'💙 Zalo', vnpay:'🔴 VNPay' };
+    const rev = orders.slice().reverse();
+
+    const makeRows9 = (list) => list.length === 0
+      ? `<tr><td colspan="9" style="text-align:center;color:var(--gray-text);padding:30px">Chưa có đơn hàng</td></tr>`
+      : list.map(o => `<tr>
+          <td><strong style="color:var(--red)">${o.id}</strong></td>
+          <td>${o.customer?.name||'—'}</td><td>${o.customer?.phone||'—'}</td>
+          <td>${o.items?.length||0} sp</td>
+          <td style="font-weight:800;color:var(--red)">${(o.total||0).toLocaleString('vi-VN')}đ</td>
+          <td>${payMap[o.payment]||o.payment}</td><td>${o.date||'—'}</td>
+          <td><span class="status-badge status--pending">⏳ Chờ xử lý</span></td>
+          <td><button class="tbl-action tbl-action--view" onclick="viewOrder('${o.id}')">Xem</button>
+              <button class="tbl-action tbl-action--edit" onclick="UI.toast('Cập nhật đơn')">Sửa</button></td>
+        </tr>`).join('');
+
+    const makeRows6 = (list) => list.length === 0
+      ? `<tr><td colspan="6" style="text-align:center;color:var(--gray-text);padding:22px">Chưa có đơn hàng nào</td></tr>`
+      : list.map(o => `<tr>
+          <td><strong style="color:var(--red)">${o.id}</strong></td>
+          <td>${o.customer?.name||'—'}</td><td>${o.items?.length||0} sp</td>
+          <td style="font-weight:800;color:var(--red)">${(o.total||0).toLocaleString('vi-VN')}đ</td>
+          <td><span class="status-badge status--pending">⏳ Chờ xử lý</span></td>
+          <td><button class="tbl-action tbl-action--view" onclick="viewOrder('${o.id}')">Xem</button></td>
+        </tr>`).join('');
+
+    const tbody  = document.getElementById('ordersTableBody');
+    const recent = document.getElementById('recentOrdersBody');
+    if (tbody)  tbody.innerHTML  = makeRows9(rev);
+    if (recent) recent.innerHTML = makeRows6(rev.slice(0, 5));
+  }
+
+  function viewOrder(id) {
+    const o = JSON.parse(localStorage.getItem('sb_orders')||'[]').find(x => x.id === id);
+    if (!o) return;
+    alert(`📦 ${o.id}\n👤 ${o.customer?.name}\n📞 ${o.customer?.phone}\n📍 ${o.customer?.address}\n🛍️ ${o.items?.map(i=>i.name+' x'+i.qty).join(', ')}\n💰 ${(o.total||0).toLocaleString('vi-VN')}đ\n🕐 ${o.date}`);
+  }
+
+  function loadProductsAdmin() {
+    const tbody = document.getElementById('productsAdminBody');
+    if (!tbody) return;
+    const catMap = { snack:'🍟 Snack', drink:'🧋 Đồ Uống', candy:'🍬 Kẹo Bánh', combo:'🎁 Combo' };
+    tbody.innerHTML = PRODUCTS.map(p => `
+      <tr>
+        <td>#${p.id}</td>
+        <td><div style="display:flex;align-items:center;gap:7px"><div class="prod-thumb">${p.emoji}</div><span style="font-weight:800">${p.name}</span></div></td>
+        <td>${catMap[p.cat]||p.cat}</td>
+        <td style="text-transform:capitalize">${p.brand}</td>
+        <td style="color:var(--red);font-weight:800">${p.price.toLocaleString('vi-VN')}đ</td>
+        <td><span class="status-badge ${p.badge==='hot'?'status--cancel':p.badge==='new'?'status--done':p.badge==='sale'?'status--pending':''}">${p.badge?p.badge.toUpperCase():'—'}</span></td>
+        <td>
+          <button class="tbl-action tbl-action--edit" onclick="UI.toast('Sửa: ${p.name}')">Sửa</button>
+          <button class="tbl-action tbl-action--delete" onclick="UI.toast('Xóa: ${p.name}')">Xóa</button>
+        </td>
+      </tr>`).join('');
+  }
+
+  function filterProducts(q) {
+    document.querySelectorAll('#productsAdminBody tr').forEach(r => {
+      r.style.display = r.textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
+    });
+  }
+
+  function adminLogout() {
+  sessionStorage.removeItem('sb_user');
+  window.location.href = 'index.html';
+}
+</script>
+</body>
+</html>

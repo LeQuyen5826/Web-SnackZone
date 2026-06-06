@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giới Thiệu — SnackZone 🍟</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar__slogan">
+          <span>🔥</span> ĐỒ ĂN VẶT NGON — GIAO HÀNG NHANH 30 PHÚT!
+        </div>
+        <div class="top-bar__socials">
+          <a href="https://facebook.com" target="_blank"
+            ><span class="icon-fb"></span
+          ></a>
+          <a href="https://zalo.me" target="_blank"
+            ><span class="icon-zalo"></span
+          ></a>
+          <a href="https://tiktok.com" target="_blank"
+            ><span class="icon-tt"></span
+          ></a>
+          <a href="https://instagram.com" target="_blank"
+            ><span class="icon-ig"></span
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="container">
+        <a href="index.html" class="header__logo">
+          <img src="../img/logo.png" alt="logo" class="header__logo-img" />
+          <span class="header__logo-text">Snack<span>Zone</span></span>
+        </a>
+        <div class="header__search">
+          <input
+            type="text"
+            id="headerSearch"
+            placeholder="🔍 Tìm kiếm đồ ăn vặt..."
+            autocomplete="off"
+          />
+          <button class="header__search-btn">🔍</button>
+        </div>
+        <div class="header__actions">
+          <button class="btn-auth" id="authBtn" onclick="Auth.openModal()">
+            <span class="icon">👤</span><span>Đăng nhập</span>
+          </button>
+          <button class="btn-cart" onclick="Cart.openSidebar()">
+            <span class="icon">🛒</span><span>Giỏ hàng</span>
+            <span class="cart-badge" id="cartBadge" style="display: none"
+              >0</span
+            >
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="navbar">
+      <div class="container">
+        <ul class="navbar__menu">
+          <li><a href="index.html" class="navbar__link">🏠 Trang Chủ</a></li>
+          <li>
+            <a href="gioi-thieu.html" class="navbar__link active"
+              >💛 Giới Thiệu</a
+            >
+          </li>
+          <li class="navbar__item">
+            <a href="san-pham.html" class="navbar__link"
+              >🛍️ Sản Phẩm <span class="arrow">▼</span></a
+            >
+            <div class="navbar__dropdown">
+              <a href="san-pham.html?cat=snack">🍟 Snack & Chips</a>
+              <a href="san-pham.html?cat=drink">🧋 Đồ Uống</a>
+              <a href="san-pham.html?cat=candy">🍬 Kẹo & Bánh</a>
+              <a href="san-pham.html?cat=combo">🎁 Combo Deal</a>
+            </div>
+          </li>
+          <li>
+            <a href="khuyen-mai.html" class="navbar__link">🔥 Khuyến Mãi</a>
+          </li>
+          <li><a href="lien-he.html" class="navbar__link">📞 Liên Hệ</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="about-hero">
+      <div class="container">
+        <h1 data-reveal>Về SnackZone 🍟</h1>
+        <p data-reveal>
+          Chúng tôi tin rằng đồ ăn vặt không chỉ là thức ăn — đó là những khoảnh
+          khắc vui vẻ, kết nối bạn bè và gia đình.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="about-grid" data-reveal>
+          <div>
+            <div class="about-img-placeholder">🏪</div>
+          </div>
+          <div>
+            <h2
+              style="
+                font-family: var(--font-head);
+                font-size: 2rem;
+                margin-bottom: 16px;
+              "
+            >
+              Câu Chuyện <span style="color: var(--red)">Của Chúng Tôi</span>
+            </h2>
+            <p
+              style="
+                color: var(--gray-text);
+                line-height: 1.8;
+                margin-bottom: 16px;
+              "
+            >
+              SnackZone được thành lập năm 2020 bởi một nhóm bạn trẻ yêu ăn vặt.
+              Xuất phát từ một góc nhỏ trên đường Nguyễn Trãi, chúng tôi bắt đầu
+              với chỉ 20 sản phẩm và niềm đam mê mang lại những hương vị ngon
+              nhất cho mọi người.
+            </p>
+            <p
+              style="
+                color: var(--gray-text);
+                line-height: 1.8;
+                margin-bottom: 24px;
+              "
+            >
+              Sau 5 năm, SnackZone đã phục vụ hơn 12.000 khách hàng thân thiết
+              với hơn 500 sản phẩm đa dạng, từ snack nội địa đến hàng nhập khẩu
+              chất lượng. Chúng tôi cam kết mang đến trải nghiệm mua sắm vui vẻ
+              và tiện lợi nhất!
+            </p>
+            <div style="display: flex; gap: 24px; flex-wrap: wrap">
+              <div>
+                <div
+                  style="
+                    font-family: var(--font-head);
+                    font-size: 2rem;
+                    color: var(--red);
+                  "
+                >
+                  12K+
+                </div>
+                <div
+                  style="
+                    font-size: 0.85rem;
+                    color: var(--gray-text);
+                    font-weight: 700;
+                  "
+                >
+                  Khách hàng
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: var(--font-head);
+                    font-size: 2rem;
+                    color: var(--red);
+                  "
+                >
+                  500+
+                </div>
+                <div
+                  style="
+                    font-size: 0.85rem;
+                    color: var(--gray-text);
+                    font-weight: 700;
+                  "
+                >
+                  Sản phẩm
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: var(--font-head);
+                    font-size: 2rem;
+                    color: var(--red);
+                  "
+                >
+                  5
+                </div>
+                <div
+                  style="
+                    font-size: 0.85rem;
+                    color: var(--gray-text);
+                    font-weight: 700;
+                  "
+                >
+                  Năm kinh nghiệm
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: var(--font-head);
+                    font-size: 2rem;
+                    color: var(--red);
+                  "
+                >
+                  4.9⭐
+                </div>
+                <div
+                  style="
+                    font-size: 0.85rem;
+                    color: var(--gray-text);
+                    font-weight: 700;
+                  "
+                >
+                  Đánh giá
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--gray">
+      <div class="container">
+        <div class="section__header" data-reveal>
+          <div>
+            <h2 class="section__title">Giá Trị <span>Cốt Lõi</span></h2>
+            <p class="section__subtitle">Những cam kết của chúng tôi với bạn</p>
+          </div>
+        </div>
+        <div class="values-grid">
+          <div class="value-card" data-reveal>
+            <div class="value-card__icon">💎</div>
+            <div class="value-card__title">Chất Lượng</div>
+            <div class="value-card__desc">
+              100% sản phẩm được kiểm định. Cam kết không hàng giả, hàng nhái.
+            </div>
+          </div>
+          <div class="value-card" data-reveal>
+            <div class="value-card__icon">⚡</div>
+            <div class="value-card__title">Giao Nhanh</div>
+            <div class="value-card__desc">
+              Giao hàng trong 30–60 phút. Đơn hàng tươi ngon đến tay bạn.
+            </div>
+          </div>
+          <div class="value-card" data-reveal>
+            <div class="value-card__icon">💰</div>
+            <div class="value-card__title">Giá Tốt</div>
+            <div class="value-card__desc">
+              Cam kết giá tốt nhất thị trường. Nhiều ưu đãi và combo tiết kiệm.
+            </div>
+          </div>
+          <div class="value-card" data-reveal>
+            <div class="value-card__icon">❤️</div>
+            <div class="value-card__title">Tận Tâm</div>
+            <div class="value-card__desc">
+              Đội ngũ hỗ trợ 24/7. Luôn lắng nghe và giải quyết mọi vấn đề.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__header" data-reveal>
+          <div>
+            <h2 class="section__title">Đội Ngũ <span>SnackZone</span></h2>
+            <p class="section__subtitle">
+              Những người đam mê đồ ăn vặt nhất Việt Nam
+            </p>
+          </div>
+        </div>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+          "
+        >
+          <div
+            style="
+              text-align: center;
+              background: #fff;
+              border-radius: var(--radius-lg);
+              padding: 28px 16px;
+              box-shadow: var(--shadow-sm);
+              border: 1.5px solid var(--border);
+            "
+            data-reveal
+          >
+            <div style="font-size: 4rem; margin-bottom: 14px">👨‍💼</div>
+            <div style="font-weight: 900; font-size: 1rem">Lê Quyền</div>
+            <div
+              style="
+                font-size: 0.82rem;
+                color: var(--red);
+                font-weight: 700;
+                margin-top: 4px;
+              "
+            >
+              CEO & Founder
+            </div>
+            <div
+              style="
+                font-size: 0.8rem;
+                color: var(--gray-text);
+                margin-top: 8px;
+                line-height: 1.5;
+              "
+            >
+              Người sáng lập với đam mê ẩm thực đường phố
+            </div>
+          </div>
+          <div
+            style="
+              text-align: center;
+              background: #fff;
+              border-radius: var(--radius-lg);
+              padding: 28px 16px;
+              box-shadow: var(--shadow-sm);
+              border: 1.5px solid var(--border);
+            "
+            data-reveal
+          >
+            <div style="font-size: 4rem; margin-bottom: 14px">👩‍🍳</div>
+            <div style="font-weight: 900; font-size: 1rem">Đức Minh</div>
+            <div
+              style="
+                font-size: 0.82rem;
+                color: var(--red);
+                font-weight: 700;
+                margin-top: 4px;
+              "
+            >
+              Trưởng phòng Sản phẩm
+            </div>
+            <div
+              style="
+                font-size: 0.8rem;
+                color: var(--gray-text);
+                margin-top: 8px;
+                line-height: 1.5;
+              "
+            >
+              Chuyên gia chọn lọc và kiểm tra sản phẩm
+            </div>
+          </div>
+          <div
+            style="
+              text-align: center;
+              background: #fff;
+              border-radius: var(--radius-lg);
+              padding: 28px 16px;
+              box-shadow: var(--shadow-sm);
+              border: 1.5px solid var(--border);
+            "
+            data-reveal
+          >
+            <div style="font-size: 4rem; margin-bottom: 14px">👨‍💻</div>
+            <div style="font-weight: 900; font-size: 1rem">Thành Nam</div>
+            <div
+              style="
+                font-size: 0.82rem;
+                color: var(--red);
+                font-weight: 700;
+                margin-top: 4px;
+              "
+            >
+              CTO
+            </div>
+            <div
+              style="
+                font-size: 0.8rem;
+                color: var(--gray-text);
+                margin-top: 8px;
+                line-height: 1.5;
+              "
+            >
+              Xây dựng nền tảng công nghệ cho SnackBoom
+            </div>
+          </div>
+          <div
+            style="
+              text-align: center;
+              background: #fff;
+              border-radius: var(--radius-lg);
+              padding: 28px 16px;
+              box-shadow: var(--shadow-sm);
+              border: 1.5px solid var(--border);
+            "
+            data-reveal
+          >
+            <div style="font-size: 4rem; margin-bottom: 14px">👩‍📱</div>
+            <div style="font-weight: 900; font-size: 1rem">Đức Khánh</div>
+            <div
+              style="
+                font-size: 0.82rem;
+                color: var(--red);
+                font-weight: 700;
+                margin-top: 4px;
+              "
+            >
+              Marketing Manager
+            </div>
+            <div
+              style="
+                font-size: 0.8rem;
+                color: var(--gray-text);
+                margin-top: 8px;
+                line-height: 1.5;
+              "
+            >
+              Lan truyền tình yêu đồ ăn vặt qua mạng xã hội
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div>
+            <span class="footer__brand-logo">🍟 SnackZone</span>
+            <p class="footer__desc">
+              Cửa hàng đồ ăn vặt uy tín hàng đầu Hà Nội.
+            </p>
+            <div class="footer__socials">
+              <a href="#">f</a><a href="#">Z</a><a href="#">♪</a
+              ><a href="#">◎</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer__heading">Điều Hướng</h4>
+            <ul class="footer__links">
+              <li><a href="index.html">🏠 Trang chủ</a></li>
+              <li><a href="gioi-thieu.html">💛 Giới thiệu</a></li>
+              <li><a href="san-pham.html">🛍️ Sản phẩm</a></li>
+              <li><a href="khuyen-mai.html">🔥 Khuyến mãi</a></li>
+              <li><a href="lien-he.html">📞 Liên hệ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer__heading">Hỗ Trợ</h4>
+            <ul class="footer__links">
+              <li><a href="#">Chính sách đổi trả</a></li>
+              <li><a href="#">Bảo mật</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer__heading">Liên Hệ</h4>
+            <div class="footer__contact-item">
+              <span>📍</span><span>123 Nguyễn Trãi, Thanh Xuân, Hà Nội</span>
+            </div>
+            <div class="footer__contact-item">
+              <span>📞</span><span>0901 234 567</span>
+            </div>
+            <div class="footer__contact-item">
+              <span>✉️</span><span>hello@snackzone.vn</span>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          © 2025 SnackZone. Đồ ăn vặt là hạnh phúc 🍟
+        </div>
+      </div>
+    </footer>
+
+    <div
+      class="cart-overlay"
+      id="cartOverlay"
+      onclick="Cart.closeSidebar()"
+    ></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+      <div class="cart-sidebar__head">
+        <div class="cart-sidebar__title">🛒 Giỏ Hàng</div>
+        <button class="close-btn" onclick="Cart.closeSidebar()">✕</button>
+      </div>
+      <div class="cart-sidebar__body" id="cartBody"></div>
+      <div class="cart-sidebar__foot" id="cartFoot" style="display: none">
+        <div class="cart-row">
+          <span>Tổng cộng</span><span id="cartTotal">0đ</span>
+        </div>
+        <button class="btn-checkout" onclick="Cart.goCheckout()">
+          🛍️ Thanh Toán
+        </button>
+      </div>
+    </aside>
+
+    <div class="modal-overlay" id="authOverlay" onclick="Auth.closeModal()">
+      <div class="modal" id="authModal" onclick="event.stopPropagation()">
+        <button class="modal__close" onclick="Auth.closeModal()">✕</button>
+        <div class="modal__logo">🍟 SnackZone</div>
+        <p class="modal__subtitle">
+          Chào mừng bạn đến với thiên đường đồ ăn vặt!
+        </p>
+        <div class="role-tabs">
+          <button
+            class="role-tab active"
+            data-role="user"
+            onclick="Auth.setRole('user')"
+          >
+            👤 Khách Hàng
+          </button>
+          <button
+            class="role-tab"
+            data-role="admin"
+            onclick="Auth.setRole('admin')"
+          >
+            🔑 Quản Trị Viên
+          </button>
+        </div>
+        <div
+          id="adminHint"
+          style="
+            display: none;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            margin-bottom: 16px;
+            color: #856404;
+          "
+        >
+          Demo admin: <strong>admin@snackboom.vn</strong> /
+          <strong>admin123</strong>
+        </div>
+        <div class="auth-tabs">
+          <button
+            class="auth-tab active"
+            data-tab="login"
+            onclick="Auth.setTab('login')"
+          >
+            Đăng Nhập
+          </button>
+          <button
+            class="auth-tab"
+            data-tab="register"
+            onclick="Auth.setTab('register')"
+          >
+            Đăng Ký
+          </button>
+        </div>
+        <div id="loginForm">
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input
+              class="form-input"
+              id="loginEmail"
+              type="email"
+              placeholder="email@example.com"
+            />
+            <div class="form-error" id="loginEmailErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mật khẩu</label>
+            <input
+              class="form-input"
+              id="loginPassword"
+              type="password"
+              placeholder="••••••••"
+            />
+            <div class="form-error" id="loginPassErr"></div>
+          </div>
+          <button class="form-submit" onclick="Auth.login()">
+            🔐 Đăng Nhập
+          </button>
+        </div>
+        <div id="registerForm" style="display: none">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Họ và tên</label>
+              <input class="form-input" id="regName" type="text" />
+              <div class="form-error" id="regNameErr"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Số điện thoại</label>
+              <input class="form-input" id="regPhone" type="tel" />
+              <div class="form-error" id="regPhoneErr"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" id="regEmail" type="email" />
+            <div class="form-error" id="regEmailErr"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Mật khẩu</label>
+              <input class="form-input" id="regPassword" type="password" />
+              <div class="form-error" id="regPassErr"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Xác nhận</label>
+              <input class="form-input" id="regConfirm" type="password" />
+              <div class="form-error" id="regConfirmErr"></div>
+            </div>
+          </div>
+          <button class="form-submit" onclick="Auth.register()">
+            🎉 Đăng Ký
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="../JS/ui.js"></script>
+    <script src="../JS/products.js"></script>
+    <script src="../JS/cart.js"></script>
+    <script src="../JS/auth.js"></script>
+  </body>
+</html>

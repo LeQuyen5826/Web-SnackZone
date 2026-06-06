@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh Toán — SnackZone 🍟</title>
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar__slogan">
+          <span>🔥</span> ĐỒ ĂN VẶT NGON — GIAO HÀNG NHANH 30 PHÚT!
+        </div>
+        <div class="top-bar__socials">
+          <a href="https://facebook.com" target="_blank"
+            ><span class="icon-fb"></span
+          ></a>
+          <a href="https://zalo.me" target="_blank"
+            ><span class="icon-zalo"></span
+          ></a>
+          <a href="https://tiktok.com" target="_blank"
+            ><span class="icon-tt"></span
+          ></a>
+          <a href="https://instagram.com" target="_blank"
+            ><span class="icon-ig"></span
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container">
+        <a href="index.html" class="header__logo">
+          <img src="../img/logo.png" alt="Logo SnackZone" class="header__logo-img" />
+          <span class="header__logo-text">Snack<span>Zone</span></span>
+        </a>
+        <div style="flex: 1; text-align: center">
+          <div
+            style="
+              font-family: var(--font-head);
+              font-size: 1.15rem;
+              color: var(--dark);
+            "
+          >
+            🛍️ Thanh Toán An Toàn
+          </div>
+          <div
+            style="font-size: 0.75rem; color: var(--gray-text); margin-top: 2px"
+          >
+            🔒 SSL Bảo mật &nbsp;|&nbsp; 🚚 Giao hàng nhanh &nbsp;|&nbsp; 💯
+            Hoàn tiền nếu không ưng
+          </div>
+        </div>
+        <!-- Đã đổi: giỏ hàng trước, đăng nhập sau -->
+        <div class="header__actions checkout-header-actions">
+          <button class="btn-cart" onclick="Cart.openSidebar()">
+            <span class="icon">🛒</span><span>Giỏ hàng</span>
+            <span class="cart-badge" id="cartBadge" style="display: none"
+              >0</span
+            >
+          </button>
+          <button class="btn-auth" id="authBtn" onclick="Auth.openModal()">
+            <span class="icon">👤</span><span>Đăng nhập</span>
+          </button>
+          <a
+            href="san-pham.html"
+            class="btn-auth"
+            style="text-decoration: none"
+          >
+            <span class="icon">←</span><span>Mua tiếp</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="index.html">🏠 Trang chủ</a>
+          <span class="breadcrumb__sep">›</span>
+          <a href="san-pham.html">Sản phẩm</a>
+          <span class="breadcrumb__sep">›</span>
+          <span>Thanh toán</span>
+        </nav>
+
+        <!-- Progress steps -->
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin: 18px 0 30px;
+          "
+        >
+          <div style="display: flex; align-items: center; gap: 7px">
+            <div
+              style="
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: var(--red);
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 900;
+                font-size: 0.83rem;
+              "
+            >
+              1
+            </div>
+            <span
+              style="font-weight: 800; font-size: 0.87rem; color: var(--red)"
+              >Thông tin</span
+            >
+          </div>
+          <div
+            style="
+              width: 50px;
+              height: 2px;
+              background: var(--border);
+              margin: 0 10px;
+              align-self: center;
+            "
+          ></div>
+          <div style="display: flex; align-items: center; gap: 7px">
+            <div
+              style="
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: var(--red);
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 900;
+                font-size: 0.83rem;
+              "
+            >
+              2
+            </div>
+            <span
+              style="font-weight: 800; font-size: 0.87rem; color: var(--red)"
+              >Vận chuyển</span
+            >
+          </div>
+          <div
+            style="
+              width: 50px;
+              height: 2px;
+              background: var(--border);
+              margin: 0 10px;
+              align-self: center;
+            "
+          ></div>
+          <div style="display: flex; align-items: center; gap: 7px">
+            <div
+              style="
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: var(--red);
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 900;
+                font-size: 0.83rem;
+              "
+            >
+              3
+            </div>
+            <span
+              style="font-weight: 800; font-size: 0.87rem; color: var(--red)"
+              >Thanh toán</span
+            >
+          </div>
+        </div>
+
+        <div id="checkoutMain">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 380px;
+              gap: 20px;
+              align-items: start;
+            "
+          >
+            <!-- CỘT TRÁI: Thông tin + Giao hàng + Thanh toán nối liền -->
+            <div
+              style="
+                background: var(--white);
+                border-radius: var(--radius-lg);
+                border: 1.5px solid var(--border);
+                box-shadow: var(--shadow-sm);
+                overflow: hidden;
+              "
+            >
+              <!-- PHẦN 1: Thông tin người nhận -->
+              <div
+                style="
+                  padding: 22px 24px;
+                  border-bottom: 2px dashed var(--border);
+                "
+              >
+                <h3 class="checkout-card__title">
+                  <span class="step-num">1</span> Thông Tin Người Nhận
+                </h3>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="ckName">Họ và tên *</label>
+                    <input
+                      class="form-input"
+                      id="ckName"
+                      type="text"
+                      placeholder="Nguyễn Văn A"
+                    />
+                    <div class="form-error" id="ckNameErr"></div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="ckPhone"
+                      >Số điện thoại *</label
+                    >
+                    <input
+                      class="form-input"
+                      id="ckPhone"
+                      type="tel"
+                      placeholder="0901234567"
+                    />
+                    <div class="form-error" id="ckPhoneErr"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="ckEmail">Email</label>
+                  <input
+                    class="form-input"
+                    id="ckEmail"
+                    type="email"
+                    placeholder="email@example.com"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="ckAddress"
+                    >Địa chỉ giao hàng *</label
+                  >
+                  <input
+                    class="form-input"
+                    id="ckAddress"
+                    type="text"
+                    placeholder="Số nhà, đường, phường, quận, tỉnh/thành"
+                  />
+                  <div class="form-error" id="ckAddressErr"></div>
+                </div>
+                <div class="form-group" style="margin-bottom: 0">
+                  <label class="form-label" for="ckNote">Ghi chú</label>
+                  <input
+                    class="form-input"
+                    id="ckNote"
+                    type="text"
+                    placeholder="Giao giờ hành chính, gọi trước khi giao..."
+                  />
+                </div>
+              </div>
+
+              <!-- PHẦN 2: Phương thức giao hàng -->
+              <div
+                style="
+                  padding: 22px 24px;
+                  border-bottom: 2px dashed var(--border);
+                "
+              >
+                <h3 class="checkout-card__title">
+                  <span class="step-num">2</span> Phương Thức Giao Hàng
+                </h3>
+                <label class="ship-option selected" style="margin-bottom: 8px">
+                  <input
+                    type="radio"
+                    name="shipping"
+                    value="standard"
+                    checked
+                  />
+                  <div class="ship-option__icon">🛵</div>
+                  <div class="ship-option__info">
+                    <div class="ship-option__name">Giao hàng tiêu chuẩn</div>
+                    <div class="ship-option__desc">
+                      2–4 tiếng | Giao trong ngày
+                    </div>
+                  </div>
+                  <div class="ship-option__price">20,000đ</div>
+                </label>
+                <label class="ship-option" style="margin-bottom: 8px">
+                  <input type="radio" name="shipping" value="express" />
+                  <div class="ship-option__icon">⚡</div>
+                  <div class="ship-option__info">
+                    <div class="ship-option__name">Giao hàng siêu tốc</div>
+                    <div class="ship-option__desc">Trong vòng 60 phút</div>
+                  </div>
+                  <div class="ship-option__price">40,000đ</div>
+                </label>
+                <label class="ship-option" style="margin-bottom: 0">
+                  <input type="radio" name="shipping" value="free" />
+                  <div class="ship-option__icon">🎉</div>
+                  <div class="ship-option__info">
+                    <div class="ship-option__name">Miễn phí giao hàng</div>
+                    <div class="ship-option__desc">Đơn từ 79,000đ</div>
+                  </div>
+                  <div class="ship-option__price free">Miễn phí</div>
+                </label>
+              </div>
+
+              <!-- PHẦN 3: Phương thức thanh toán — dropdown -->
+              <div style="padding: 22px 24px">
+                <h3 class="checkout-card__title">
+                  <span class="step-num">3</span> Phương Thức Thanh Toán
+                </h3>
+                <div style="position: relative">
+                  <select
+                    id="paymentSelect"
+                    onchange="selectPayment(this)"
+                    style="
+                      width: 100%;
+                      padding: 13px 40px 13px 16px;
+                      border: 2px solid var(--border);
+                      border-radius: var(--radius-md);
+                      font-size: 0.93rem;
+                      font-weight: 700;
+                      color: var(--dark);
+                      background: var(--gray);
+                      outline: none;
+                      cursor: pointer;
+                      appearance: none;
+                      transition: border-color 0.25s;
+                    "
+                  >
+                    <option value="cod">
+                      💵 COD — Thanh toán khi nhận hàng
+                    </option>
+                    <option value="bank">🏦 Chuyển khoản ngân hàng</option>
+                    <option value="momo">💜 Ví MoMo</option>
+                    <option value="zalopay">💙 ZaloPay</option>
+                    <option value="vnpay">🔴 VNPay QR</option>
+                  </select>
+                  <span
+                    style="
+                      position: absolute;
+                      right: 14px;
+                      top: 50%;
+                      transform: translateY(-50%);
+                      pointer-events: none;
+                      font-size: 0.7rem;
+                      color: var(--gray-text);
+                    "
+                    >▼</span
+                  >
+                </div>
+                <!-- Input ẩn để checkout.js đọc -->
+                <input
+                  type="hidden"
+                  id="paymentHidden"
+                  name="payment"
+                  value="cod"
+                />
+
+                <!-- Mô tả theo lựa chọn -->
+                <div
+                  id="paymentDesc"
+                  style="
+                    margin-top: 10px;
+                    padding: 11px 14px;
+                    background: var(--gray);
+                    border-radius: var(--radius-md);
+                    font-size: 0.84rem;
+                    color: var(--gray-text);
+                    line-height: 1.6;
+                  "
+                >
+                  💵 Trả tiền mặt hoặc quẹt thẻ khi nhận hàng. Không cần thanh
+                  toán trước.
+                </div>
+              </div>
+            </div>
+
+            <!-- CỘT PHẢI: Tóm tắt đơn hàng + Đặt hàng -->
+            <div
+              style="
+                background: var(--white);
+                border-radius: var(--radius-lg);
+                border: 1.5px solid var(--border);
+                box-shadow: var(--shadow-sm);
+                overflow: hidden;
+                position: sticky;
+                top: 88px;
+              "
+            >
+              <!-- Tiêu đề -->
+              <div
+                style="
+                  padding: 18px 20px;
+                  background: var(--red);
+                  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+                "
+              >
+                <div
+                  style="
+                    font-family: var(--font-head);
+                    font-size: 1.05rem;
+                    color: var(--white);
+                  "
+                >
+                  🧾 Đơn Hàng Của Bạn
+                </div>
+              </div>
+
+              <!-- Danh sách sản phẩm — thanh kéo -->
+              <div
+                style="
+                  padding: 14px 18px;
+                  border-bottom: 1.5px solid var(--border);
+                "
+              >
+                <div
+                  id="orderItemsList"
+                  style="
+                    max-height: 200px;
+                    overflow-y: auto;
+                    padding-right: 4px;
+                    scrollbar-width: thin;
+                    scrollbar-color: var(--border) var(--gray);
+                  "
+                ></div>
+              </div>
+
+              <!-- Mã giảm giá -->
+              <div
+                style="
+                  padding: 14px 18px;
+                  border-bottom: 1.5px solid var(--border);
+                "
+              >
+                <div class="promo-input-wrap" style="margin-bottom: 4px">
+                  <input
+                    type="text"
+                    id="promoInput"
+                    placeholder="🎟️ Nhập mã giảm giá..."
+                  />
+                  <button id="applyPromoBtn">Áp dụng</button>
+                </div>
+                <div
+                  id="promoMsg"
+                  style="font-size: 0.78rem; font-weight: 700"
+                ></div>
+                <div
+                  style="
+                    font-size: 0.71rem;
+                    color: var(--gray-text);
+                    margin-top: 2px;
+                  "
+                >
+                  Thử: SNACK10 · FREESHIP · WELCOME
+                </div>
+              </div>
+
+              <!-- Tổng tiền -->
+              <div
+                style="
+                  padding: 14px 18px;
+                  border-bottom: 1.5px solid var(--border);
+                "
+              >
+                <div class="summary-row">
+                  <span>Tạm tính</span><span id="sumSubtotal">0đ</span>
+                </div>
+                <div class="summary-row">
+                  <span>Phí vận chuyển</span
+                  ><span id="sumShipping">20,000đ</span>
+                </div>
+                <div
+                  class="summary-row"
+                  id="discountRow"
+                  style="display: none; color: var(--green)"
+                >
+                  <span>Giảm giá</span><span id="sumDiscount">—</span>
+                </div>
+                <div class="summary-row total">
+                  <span>Tổng cộng</span><span id="sumTotal">0đ</span>
+                </div>
+              </div>
+
+              <!-- Nút đặt hàng -->
+              <div style="padding: 16px 18px">
+                <button class="btn-place-order" id="placeOrderBtn">
+                  ✅ Đặt Hàng Ngay
+                </button>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-around;
+                    margin-top: 12px;
+                  "
+                >
+                  <span style="font-size: 0.71rem; color: var(--gray-text)"
+                    >🔒 Bảo mật</span
+                  >
+                  <span style="font-size: 0.71rem; color: var(--gray-text)"
+                    >🔄 Đổi trả 7 ngày</span
+                  >
+                  <span style="font-size: 0.71rem; color: var(--gray-text)"
+                    >📞 HT 24/7</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Đặt hàng thành công -->
+        <div id="orderSuccess" style="display: none">
+          <div class="order-success">
+            <div class="order-success__icon">🎉</div>
+            <h2 class="order-success__title">Đặt Hàng Thành Công!</h2>
+            <p class="order-success__msg">
+              Cảm ơn bạn đã tin tưởng SnackBoom! 🍟<br />
+              Mã đơn hàng:
+              <strong id="successOrderId" style="color: var(--red)"></strong
+              ><br />
+              Chúng tôi sẽ giao hàng trong vòng 30–60 phút.<br />
+              Bạn sẽ nhận được SMS xác nhận ngay sau đây.
+            </p>
+            <div
+              style="
+                display: flex;
+                gap: 12px;
+                justify-content: center;
+                flex-wrap: wrap;
+              "
+            >
+              <a href="index.html" class="btn btn-primary">🏠 Về Trang Chủ</a>
+              <a href="san-pham.html" class="btn btn-outline">🛍️ Mua Tiếp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div>
+            <span class="footer__brand-logo">🍟 SnackZone</span>
+            <p class="footer__desc">
+              Cửa hàng đồ ăn vặt uy tín hàng đầu Hà Nội. Hơn 500 sản phẩm đa
+              dạng, giao hàng nhanh, giá cả hợp lý. Đồ ăn vặt là hạnh phúc!
+            </p>
+            <div class="footer__socials">
+              <a href="https://facebook.com" target="_blank" title="Facebook"
+                >f</a
+              >
+              <a href="https://zalo.me" target="_blank" title="Zalo">Z</a>
+              <a href="https://tiktok.com" target="_blank" title="TikTok">♪</a>
+              <a href="https://instagram.com" target="_blank" title="Instagram"
+                >◎</a
+              >
+            </div>
+          </div>
+          <div>
+            <h4 class="footer__heading">Điều Hướng</h4>
+            <ul class="footer__links">
+              <li><a href="index.html">🏠 Trang chủ</a></li>
+              <li><a href="gioi-thieu.html">💛 Giới thiệu</a></li>
+              <li><a href="san-pham.html">🛍️ Sản phẩm</a></li>
+              <li><a href="khuyen-mai.html">🔥 Khuyến mãi</a></li>
+              <li><a href="lien-he.html">📞 Liên hệ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer__heading">Hỗ Trợ</h4>
+            <ul class="footer__links">
+              <li><a href="#">Chính sách đổi trả</a></li>
+              <li><a href="#">Chính sách bảo mật</a></li>
+              <li><a href="#">Hướng dẫn mua hàng</a></li>
+              <li><a href="#">Câu hỏi thường gặp</a></li>
+              <li><a href="lien-he.html">Khiếu nại</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer__heading">Liên Hệ</h4>
+            <div class="footer__contact-item">
+              <span class="footer__contact-icon">📍</span>
+              <span>123 Đường Nguyễn Trãi, Thanh Xuân, Hà Nội</span>
+            </div>
+            <div class="footer__contact-item">
+              <span class="footer__contact-icon">📞</span>
+              <span>0901 234 567</span>
+            </div>
+            <div class="footer__contact-item">
+              <span class="footer__contact-icon">✉️</span>
+              <span>hello@snackzone.vn</span>
+            </div>
+            <div class="footer__contact-item">
+              <span class="footer__contact-icon">🕐</span>
+              <span>8:00 – 22:00 hàng ngày</span>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          © 2025 SnackZone. Đồ ăn vặt là hạnh phúc 🍟 &nbsp;|&nbsp; Thiết kế bởi
+          SnackZone Team
+        </div>
+      </div>
+    </footer>
+
+    <!-- CART SIDEBAR -->
+    <div
+      class="cart-overlay"
+      id="cartOverlay"
+      onclick="Cart.closeSidebar()"
+    ></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+      <div class="cart-sidebar__head">
+        <div class="cart-sidebar__title">🛒 Giỏ Hàng</div>
+        <button class="close-btn" onclick="Cart.closeSidebar()">✕</button>
+      </div>
+      <div class="cart-sidebar__body" id="cartBody"></div>
+      <div class="cart-sidebar__foot" id="cartFoot" style="display: none">
+        <div class="cart-row">
+          <span>Tạm tính</span><span id="cartSubtotal">0đ</span>
+        </div>
+        <div class="cart-row">
+          <span>Phí giao hàng</span><span id="cartShipping">20,000đ</span>
+        </div>
+        <div class="cart-row total">
+          <span>Tổng cộng</span><span id="cartTotal">0đ</span>
+        </div>
+        <button class="btn-checkout" onclick="Cart.goCheckout()">
+          🛍️ Tiến Hành Thanh Toán
+        </button>
+      </div>
+    </aside>
+
+    <!-- AUTH MODAL -->
+    <div class="modal-overlay" id="authOverlay" onclick="Auth.closeModal()">
+      <div class="modal" id="authModal" onclick="event.stopPropagation()">
+        <button class="modal__close" onclick="Auth.closeModal()">✕</button>
+        <div class="modal__logo">🍟 SnackBoom</div>
+        <p class="modal__subtitle">Chào mừng bạn!</p>
+        <div class="role-tabs">
+          <button
+            class="role-tab active"
+            data-role="user"
+            onclick="Auth.setRole('user')"
+          >
+            👤 Khách Hàng
+          </button>
+          <button
+            class="role-tab"
+            data-role="admin"
+            onclick="Auth.setRole('admin')"
+          >
+            🔑 Quản Trị
+          </button>
+        </div>
+        <div
+          id="adminHint"
+          style="
+            display: none;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 9px 13px;
+            font-size: 0.8rem;
+            margin-bottom: 14px;
+            color: #856404;
+          "
+        >
+          Demo: <strong>admin@snackboom.vn</strong> / <strong>admin123</strong>
+        </div>
+        <div class="auth-tabs">
+          <button
+            class="auth-tab active"
+            data-tab="login"
+            onclick="Auth.setTab('login')"
+          >
+            Đăng Nhập
+          </button>
+          <button
+            class="auth-tab"
+            data-tab="register"
+            onclick="Auth.setTab('register')"
+          >
+            Đăng Ký
+          </button>
+        </div>
+        <div id="loginForm">
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input
+              class="form-input"
+              id="loginEmail"
+              type="email"
+              placeholder="email@example.com"
+            />
+            <div class="form-error" id="loginEmailErr"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mật khẩu</label>
+            <input
+              class="form-input"
+              id="loginPassword"
+              type="password"
+              placeholder="••••••••"
+            />
+            <div class="form-error" id="loginPassErr"></div>
+          </div>
+          <button class="form-submit" onclick="Auth.login()">
+            🔐 Đăng Nhập
+          </button>
+        </div>
+        <div id="registerForm" style="display: none">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Họ tên</label>
+              <input class="form-input" id="regName" type="text" />
+              <div class="form-error" id="regNameErr"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">SĐT</label>
+              <input class="form-input" id="regPhone" type="tel" />
+              <div class="form-error" id="regPhoneErr"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" id="regEmail" type="email" />
+            <div class="form-error" id="regEmailErr"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Mật khẩu</label>
+              <input class="form-input" id="regPassword" type="password" />
+              <div class="form-error" id="regPassErr"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Xác nhận</label>
+              <input class="form-input" id="regConfirm" type="password" />
+              <div class="form-error" id="regConfirmErr"></div>
+            </div>
+          </div>
+          <button class="form-submit" onclick="Auth.register()">
+            🎉 Đăng Ký
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="../JS/ui.js"></script>
+    <script src="../JS/products.js"></script>
+    <script src="../JS/cart.js"></script>
+    <script src="../JS/auth.js"></script>
+    <script src="../JS/checkout.js"></script>
+
+    <script>
+      const paymentDescs = {
+        cod: "💵 Trả tiền mặt hoặc quẹt thẻ khi nhận hàng. Không cần thanh toán trước.",
+        bank: "🏦 Chuyển khoản qua MB Bank · Vietcombank · Techcombank · BIDV. Chúng tôi sẽ xác nhận sau khi nhận tiền.",
+        momo: "💜 Mở app MoMo → Quét mã QR hoặc chuyển đến số 0901 234 567. Xác nhận tự động.",
+        zalopay: "💙 Mở Zalo → ZaloPay → Quét mã hoặc chuyển đến 0901 234 567.",
+        vnpay:
+          "🔴 Quét mã VNPay QR bằng bất kỳ app ngân hàng nội địa nào. Thanh toán tức thì.",
+      };
+      function selectPayment(sel) {
+        const val = sel.value;
+        document.getElementById("paymentHidden").value = val;
+        document.getElementById("paymentDesc").textContent =
+          paymentDescs[val] || "";
+        sel.style.borderColor = "var(--red)";
+      }
+    </script>
+  </body>
+</html>
